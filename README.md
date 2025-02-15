@@ -2,7 +2,12 @@
 <p>Bu proje, Linux işletim sisteminde sistem günlüklerini (syslog) bağlı liste (linked list) veri yapısı kullanarak tutan bir C uygulamasıdır. Syslog kayıtları, bağlı liste ile dinamik olarak yönetilir ve ekrana yazdırılır.</p>
 <ul>
   <li> <b>Syslog Mekanizması Nedir,Ne İçin Kullanılır? </b></li>
-  Syslog,Linux ve diğer Unix benzeri işletim sistemlerinde sistem yöneticilerinin sistem olaylarını kaydetmek,izlemek ve analiz etmek için kullandığı protokoldür.Syslog,sistem olaylarını kaydeden ve yöneten bir günlük(log)sistemidir.<br>
+  Syslog,Linux ve diğer Unix benzeri işletim sistemlerinde sistem yöneticilerinin sistem olaylarını kaydetmek,izlemek ve analiz etmek için kullandığı protokoldür.Syslog,sistem olaylarını kaydeden ve yöneten bir günlük(log)sistemidir.Sistem yöneticileri, donanım, yazılım, güvenlik olayları veya kullanıcı etkileşimleri gibi tüm önemli olayları izlemek için syslog'u kullanır.Syslog, /var/log/ dizini altında farklı dosyalarda saklanır. Örneğin:<br>
+  <ul>
+    <li><b>syslog:</b> Genel sistem günlükleri</li>
+    <li><b>auth.log:</b> Kimlik doğrulama ile ilgili olaylar</li>
+    <li><b>kern.log:</b>Çekirdek ile ilgili olaylar</li>
+  </ul>
   <b>Kullanım Alanları:</b>
   <ul>
     <li>Sistem hatalarının tespiti ve çözümü</li>
@@ -13,11 +18,22 @@
 
   <li> <b>Bağlı Liste Veri Yapısı İle Syslog Kayıtlarının Tutulması </b></li>
   Syslog kayıtları,genellikle metin tabanlı ve sıralı bir şekilde tutulur.Bu kayıtları izlemek ve yönetmek için bağlı liste veri yapısı kullanılabilir.Bağlı liste,dinamik bellek yönetimi ve esnek veri ekleme/silme işlemleri için idealdir. <br>
+  <p> <b>Bağlı Liste Veri Yapısı Nedir?:</b>Bağlı liste , dinamik olarak büyüyen veya küçülen bir veri yapısıdır.
+Her bir düğüm (node), veriyi ve bir sonraki düğümün adresini içerir.Bağlı listeler, bellek kullanımında esneklik sağlar ve diziye göre daha dinamik bir yapı sunar.İki temel türü vardır:
+    <ul>
+      <li><b>Tek Yönlü Bağlı Liste :</b>Her düğüm sadece bir sonraki düğümü işaret eder.</li>
+      <li><b>Çift Yönlü Bağlı Liste :</b>Her düğüm hem önceki hem de sonraki düğümü işaret eder.</li>
+    </ul>
   <p><b>Kullanılan Bağlı Liste Türü:</b>tek yönlü bağlı liste(singly listed list) <br></p>
-  <p><b>Tercih Sebebi:</b>Syslog kayıtları genellikle sıralı bir şekilde eklenir ve tek yönlü bağlı liste bu bu tür verileri tutmak için yeterlidir.Bellek kullanımı açısından verimli olduğundan dolayı hafızanın verimli kullanılmasını sağlar.</p>
+  <p><b>Tercih Sebebi:</b>Syslog kayıtları genellikle sadece baştan sona okunur ve genellikle sıralı bir şekilde eklendiğinden dolayı tek yönlü bağlı liste bu bu tür verileri tutmak için yeterlidir.Bellek kullanımı açısından verimli olduğundan dolayı hafızanın verimli kullanılmasını sağlar.</p>
 
   <li> <b>Bağlı Liste Yapısının Syslog Kayıtlarıyla İlişkisi </b></li>
   Syslog kayıtları,genellikle zaman damgası (timestamp),mesaj kaynağı (facility),önem seviyesi (severity) ve mesaj içeriği gibi bilgiler içerir.Bu kayıtları bağlı liste ile tutarken her bir düğüm (node) bir syslog kaydını temsil eder.Düğümler,bir sonraki kaydı işaret eden işaretçi yani pointer içerir. <br>
+  <p><b>Tek Yönlü Bağlı Liste Seçilmesinin Sebebi:</p>
+    <ul>
+      <li><b>Baitlik:</b>Daha az bellek kullanımı ve daha az karmaşıklık.</li>
+      <li>Syslog kayıtları genellikle sadece baştan sona okunur, geriye dönüş ihtiyacı nadiren ortaya çıkar.</li>
+    </ul>
   <p> <b>Avantajları:</b>
     <ul>
       <li>Yeni kayıtların eklenmesi kolaydır.</li>
