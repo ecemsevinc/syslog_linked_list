@@ -31,7 +31,7 @@ Her bir düğüm (node), veriyi ve bir sonraki düğümün adresini içerir.Bağ
   Syslog kayıtları,genellikle zaman damgası (timestamp),mesaj kaynağı (facility),önem seviyesi (severity) ve mesaj içeriği gibi bilgiler içerir.Bu kayıtları bağlı liste ile tutarken her bir düğüm (node) bir syslog kaydını temsil eder.Düğümler,bir sonraki kaydı işaret eden işaretçi yani pointer içerir. <br>
 
   
-  <p><b>Tek Yönlü Bağlı Liste Seçilmesinin Sebebi:</p>
+  <p><b>Tek Yönlü Bağlı Liste Seçilmesinin Sebebi:</b></p>
     <ul>
       <li><b>Basitlik:</b>Daha az bellek kullanımı ve daha az karmaşıklık.</li>
       <li>Syslog kayıtları genellikle sadece baştan sona okunur, geriye dönüş ihtiyacı nadiren ortaya çıkar.</li>
